@@ -6,6 +6,14 @@ controller:
     type: LoadBalancer  # Change from NodePort to LoadBalancer for ALB
     annotations:        # Include any specific annotations required for your ALB
       service.beta.kubernetes.io/aws-load-balancer-type: "alb" # For example, specify NLB type if needed.
+
+        ports:
+      http:
+        port: 80
+        targetPort: 8080 # Jenkins default port
+      https:
+        port: 443
+        targetPort: 8080 # Optional if using HTTPS
   
   persistence:
     enabled: true
