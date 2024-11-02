@@ -5,21 +5,18 @@ metadata:
   namespace: jenkins
 spec:
   storageClassName: jenkins-pv
+  accessModes:
+  - ReadWriteOnce
   capacity:
     storage: 20Gi
-  accessModes:
-    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /mnt/data/jenkins
+    path: /data/jenkins-volume/
+
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: jenkins-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
+  name: jenkins-pv
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
