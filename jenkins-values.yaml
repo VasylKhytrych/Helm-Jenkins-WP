@@ -4,15 +4,10 @@ controller:
     - workflow-aggregator:2.6
     - git:4.10.1
   service:
-    type: ClusterIP
-    annotations:
-      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-      service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+    type: NodePort
+    port: 8080
   persistence:
     enabled: true
     existingClaim: jenkins-pvc
     storageClass: ""
-    size: 10Gi
-  serviceAccount:
-    create: true
-    name: default
+    size: 20Gi
