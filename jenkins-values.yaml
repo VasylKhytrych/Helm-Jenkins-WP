@@ -1,0 +1,22 @@
+# jenkins-values.yaml
+
+controller:
+  service:
+    enabled: true
+    type: LoadBalancer  # Change from NodePort to LoadBalancer for ALB
+    annotations:        # Include any specific annotations required for your ALB
+      service.beta.kubernetes.io/aws-load-balancer-type: "alb" # For example, specify NLB type if needed.
+  
+  persistence:
+    enabled: true
+    existingClaim: jenkins-pv-claim # Ensure this matches your PVC for Jenkins persistence
+    storageClass: jenkins-pv          # Define the storage class if required
+    size: 20Gi                        # Adjust the size as needed
+  
+  serviceAccount:
+    create: false
+    name: jenkins                      # Referencing the service account created earlier
+
+  installPlugins:
+    - git
+    - workflow-aggregator
