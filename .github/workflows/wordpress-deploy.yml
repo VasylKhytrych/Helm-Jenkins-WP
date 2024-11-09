@@ -1,0 +1,32 @@
+name: Deploy WordPress with Helm
+
+on:
+  push:
+    branches:
+      - main  # or any branch you prefer to trigger the deployment
+  workflow_dispatch:
+
+jobs:
+  deploy-wordpress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Kubernetes
+        # Use a tool like kubectl and configure the KUBECONFIG environment variable
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: |
+          echo "$KUBECONFIG" > ~/.kube/config
+
+      - name: Set up Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Helm install/upgrade WordPress
+        run: |
+          helm upgrade --install wordpress ./wordpress-chart/ --namespace default
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
