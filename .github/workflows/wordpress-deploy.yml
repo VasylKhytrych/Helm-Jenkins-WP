@@ -20,14 +20,12 @@ jobs:
           KUBECONFIG: ${{ secrets.KUBECONFIG }}
         run: |
           mkdir -p ~/.kube
-          echo "$KUBECONFIG" > ~/.kube/config
+          cp ./kubeconfig ~/.kube/config
         shell: bash
 
       - name: Verify kubectl connection
         run: |
           kubectl get nodes
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
       - name: Set up Helm
         run: |
