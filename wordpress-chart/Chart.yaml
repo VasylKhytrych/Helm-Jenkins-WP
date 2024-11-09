@@ -1,0 +1,6 @@
+apiVersion: v2
+name: wordpress-k3s-chart
+description: A Helm chart for deploying WordPress on k3s running on AWS EC2
+version: 1.0.0
+appVersion: 5.9 
+
