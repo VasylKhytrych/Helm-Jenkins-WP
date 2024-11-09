@@ -24,10 +24,10 @@ jobs:
         shell: bash
 
       - name: Verify kubectl connection
-        run: kubectl get nodes
+        run: |
+          kubectl get nodes
         env:
-          KUBECONFIG: ~/.kube/config
-
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
       - name: Set up Helm
         run: |
