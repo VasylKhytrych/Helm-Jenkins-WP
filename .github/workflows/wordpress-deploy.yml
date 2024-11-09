@@ -20,7 +20,7 @@ jobs:
           KUBECONFIG: ${{ secrets.KUBECONFIG }}
         run: |
           mkdir -p ~/.kube
-          cp ./kubeconfig ~/.kube/config
+          cp ./kubeconf.yaml ~/.kube/config
         shell: bash
 
       - name: Verify kubectl connection
