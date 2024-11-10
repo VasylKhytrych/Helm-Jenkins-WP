@@ -1,8 +1,8 @@
 name: Deploy WordPress with Helm
 
 on:
-  push:
-    branches:
+#  push:
+#    branches:
 #      - main  # or any branch you prefer to trigger the deployment
   workflow_dispatch:
 
