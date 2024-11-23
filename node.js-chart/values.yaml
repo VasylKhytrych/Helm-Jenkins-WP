@@ -1,0 +1,9 @@
+image:
+  repository: 207567795251.dkr.ecr.eu-central-1.amazonaws.com/devops_task/main
+  tag: latest
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 3000
+  nodePort: 30180  # Optional: Specify a custom NodePort between 30000-32767
