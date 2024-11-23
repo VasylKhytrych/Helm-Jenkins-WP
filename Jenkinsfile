@@ -1,6 +1,31 @@
 pipeline {
-    agent any
-
+    agent {
+        kubernetes {
+            label 'docker-build'
+            yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  serviceAccountName: jenkins
+  containers:
+  - name: jenkins-agent
+    image: jenkins/inbound-agent:latest
+    command:
+    - cat
+    tty: true
+    securityContext:
+      privileged: true
+  - name: docker
+    image: docker:dind
+    securityContext:
+      privileged: true
+  - name: helm
+    image: alpine/helm:3.11.1  # Helm container
+    command: ['cat']
+    tty: true
+"""
+        }
+    }
     parameters {
         booleanParam(name: 'BUILD_DOCKER_IMAGE', defaultValue: true, description: 'Build and push Docker image')
         string(name: 'IMAGE_TAG', defaultValue: 'v1.0', description: 'Tag for Docker image')
