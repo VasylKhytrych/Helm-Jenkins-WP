@@ -7,7 +7,20 @@ pipeline {
         DOCKER_IMAGE = "${ECR_REPOSITORY}:${IMAGE_TAG}"
     }
 
+
     stages {
+
+        stage('Install Dependencies') {
+            agent {
+                docker {
+                    image 'node:lts'
+                }
+            }
+            steps {
+                sh 'npm install'
+            }
+        }
+        
         stage('Build Application') {
             steps {
                 echo 'Installing Node.js dependencies...'
