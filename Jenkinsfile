@@ -27,7 +27,7 @@ spec:
         }
     }
     environment {
-        AWS_CREDENTIALS_ID = 'aws-ecr'
+        AWS_CREDENTIALS_ID = 'AWS_Creds'
         AWS_ACCOUNT_ID = '207567795251'
         ECR_REPOSITORY = '207567795251.dkr.ecr.eu-central-1.amazonaws.com/devops_task/main'
         IMAGE_TAG = "latest"
