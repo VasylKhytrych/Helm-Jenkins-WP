@@ -79,7 +79,6 @@ spec:
             }
         }
         stage('Push Docker Image to ECR') {
-            when { expression { params.PUSH_TO_ECR == true } }
             steps {
                 script {
                     if (currentBuild.currentResult != 'FAILURE') {  //Capture success (or unstable)
