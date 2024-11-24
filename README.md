@@ -1,3 +1,5 @@
+Please check [PR_annotation](https://github.com/VasylKhytrych/Helm-Jenkins-WP/blob/main/PR_annotaion.md) file.
+
 # Task 6: Application Deployment via Jenkins Pipeline
 
 This repository contains a simple project. A `Dockerfile` is used to build the container, and a Helm Chart for deploying this application. The `Jenkinsfile` automates running tests, GO unit test, building, and deploying the application.
