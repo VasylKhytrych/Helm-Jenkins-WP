@@ -82,7 +82,7 @@ spec:
             when { expression { params.PUSH_TO_ECR == true } }
             steps {
                 script {
-                    if (currentBuild.result != 'FAILURE') {  //Capture success (or unstable)
+                    if (currentBuild.currentResult != 'FAILURE') {  //Capture success (or unstable)
                         env.PUSH_SUCCESSFUL = true
                     } else {
                         env.PUSH_SUCCESSFUL = false // Explicitly set to false on failure
