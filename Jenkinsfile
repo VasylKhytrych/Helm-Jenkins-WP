@@ -113,7 +113,6 @@ spec:
             }
         }
         stage('Deploy to Kubernetes with Helm') {
-            when { expression { params.PUSH_TO_ECR == true } }
             steps {
                 container('helm') {
                     sh """
@@ -130,7 +129,7 @@ spec:
     post {
         always {
             cleanWs()
-            mail to: 'test@test.com',
+            mail to: '@test.com',
             subject: "Jenkins Build: ${currentBuild.result}",
             body: "Job: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER}"
         }
