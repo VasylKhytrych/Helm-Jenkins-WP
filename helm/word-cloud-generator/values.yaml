@@ -7,7 +7,7 @@ image:
 service:
   type: NodePort
   port: 8888
-  nodePort: 30007 
+  nodePort: 30180 
 
 replicaCount: 1
 resources:
