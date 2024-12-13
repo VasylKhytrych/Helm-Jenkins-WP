@@ -99,30 +99,30 @@ admin:
 smtp:
   ## @param smtp.enabled Enable SMTP configuration
   ##
-  enabled: false
+  enabled: true
   ## @param smtp.user SMTP user
   ##
-  user: user
+  user: ""
   ## @param smtp.password SMTP password
   ##
-  password: password
+  password: ""
   ## @param smtp.host Custom host for the smtp server
   ## e.g:
   ##   host: mysmtphost.com
   ##
-  host: ""
+  host: email-smtp.us-east-1.amazonaws.com:587
   ## @param smtp.fromAddress From address
   ##
-  fromAddress: ""
+  fromAddress: "devopscoursevasylkh@gmail.com"
   ## @param smtp.fromName From name
   ##
-  fromName: ""
+  fromName: "Grafana_Alerts_RSSchool"
   ## @param smtp.skipVerify Enable skip verify
   ##
   skipVerify: "false"
   ## @param smtp.existingSecret Name of existing secret containing SMTP credentials (user and password)
   ##
-  existingSecret: ""
+  existingSecret: "grafana-smtp-creds"
   ## @param smtp.existingSecretUserKey User key on the existing secret
   ##
   existingSecretUserKey: user
@@ -290,7 +290,7 @@ notifiers:
 ## @param alerting.configMapName Name of a ConfigMap containing Grafana alerting configuration
 ##
 alerting:
-  configMapName: ""
+  configMapName: "grafana-contact-point"
 ## @section Grafana Deployment parameters
 grafana:
   ## @param grafana.replicaCount Number of Grafana nodes
